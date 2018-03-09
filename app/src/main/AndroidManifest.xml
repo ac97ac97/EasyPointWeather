@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -24,6 +25,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Splashscreen.SplashScreenActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,12 +48,30 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Index.IndexActivity"
+            android:label="中国"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ForgetPassword.ForgetPassWord"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".ForgetPassword.ForgetPassWord" />
-        <activity android:name=".ForgetPassword.EdtPassword">
-        </activity>
-        <activity android:name=".ForgetPassword.SuccessPassword">
+        <activity
+            android:name=".ForgetPassword.EdtPassword"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ForgetPassword.SuccessPassword"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Splashscreen.CancelSplashScreen"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Index.WeatherActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
     </application>
 

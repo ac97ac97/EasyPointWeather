@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import example.sdbi.com.easypointweather.R;
 
@@ -22,13 +23,16 @@ public class ForgetPassWord extends Activity {
         setContentView(example.sdbi.com.easypointweather.R.layout.forget_password);
         final EditText saveNumber=findViewById(R.id.forgetEdt);
         Button startToNext=findViewById(R.id.startToNext);
-        startToNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(ForgetPassWord.this,EdtPassword.class);
-                intent.putExtra("number",saveNumber.getText().toString());
-                startActivity(intent);
-            }
-        });
+
+            startToNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(ForgetPassWord.this,EdtPassword.class);
+                    intent.putExtra("number",saveNumber.getText().toString());
+                    startActivity(intent);
+                }
+            });
+
+
     }
 }

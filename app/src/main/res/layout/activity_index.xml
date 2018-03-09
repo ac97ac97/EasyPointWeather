@@ -2,12 +2,128 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="35sp"
-    android:textColor="#ff00"
-    android:text="欢迎来到易点天气"/>
+    android:background="@color/colorAccent"
+    android:orientation="vertical" >
+
+    <!-- 1. 顶部标题栏 -->
+<!--<include android:id="@+id/show_main_title_home"
+    layout="@layout/title_home"/>-->
+    <include
+        android:id="@+id/show_main_title"
+
+        layout="@layout/title_layout" />
+    <!-- 2. 存放个Fragment -->
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/whitesmoke" >
+    </FrameLayout>
+    <!-- 3. 底部的四个选项菜单 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FFFFFF" >
+
+        <!-- 四个部分都一样：ImageView + TextView -->
+
+        <RelativeLayout
+            android:id="@+id/home_press"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_marginRight="2dp"
+                    android:id="@+id/home_press_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/home" />
+
+                <TextView
+                    android:id="@+id/home_press_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="首 页"
+                    android:textColor="#13b5b1" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/found_press"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_marginRight="2dp"
+                    android:id="@+id/found_press_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/found" />
+
+                <TextView
+                    android:id="@+id/found_press_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="定 位"
+                    android:textColor="#13b5b1" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_press"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_marginRight="2dp"
+                    android:id="@+id/my_press_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/my" />
+
+                <TextView
+
+                    android:id="@+id/my_press_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:text="我 的"
+                    android:textColor="#13b5b1" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
 </LinearLayout>

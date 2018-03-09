@@ -23,16 +23,18 @@ import example.sdbi.com.easypointweather.Index.IndexActivity;
 import example.sdbi.com.easypointweather.R;
 import example.sdbi.com.easypointweather.Register.Register;
 import example.sdbi.com.easypointweather.DBInformation.Users;
+import example.sdbi.com.easypointweather.Splashscreen.CancelSplashScreen;
 
 public class MainActivity extends AppCompatActivity {
-    private Button login,cancel;
+    private Button login, cancel;
     private EditText accountEdt, passwordEdt;
     private TextView register;
     private TextView forgetPassword;
-    private String account,password;
+    private String account, password;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private CheckBox rememberPass, autoLogin;
+    private String user, pwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,40 +71,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         /**
-         * 登录
+         * 登录 需要一个中间变量 将从数据库中取出的数据 暂存
          */
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List<Users> userses = DataSupport.findAll(Users.class);
+                String account_input = accountEdt.getText().toString();
                 for (Users users : userses) {
                     Log.d("abc", "phoneNumber is " + users.getPhoneNumber() + "\n" + "passWord is " + users.getPassWord());
-                    account=users.getPhoneNumber();
-                    password=users.getPassWord();
-                    if (accountEdt.getText().toString().equals(account) && passwordEdt.getText().toString().equals(password)) {
-                        Intent intent = new Intent(MainActivity.this, IndexActivity.class);
-                        editor = pref.edit();
-                        if (rememberPass.isChecked()) {// 复选框是否被选中
-                            editor.putBoolean("remember_password", true);
-                            editor.putString("account", account);
-                            editor.putString("password", password);
-                        } else {
-                            editor.clear();
-                        }
-                        editor.commit();
-                        startActivity(intent);
-                    } else if (accountEdt.getText().toString().equals("")||passwordEdt.getText().toString().equals("")){
-                        Toast.makeText(MainActivity.this,"用户名密码不能为空",Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-
-                        Toast.makeText(MainActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                    account = users.getPhoneNumber();
+                    password = users.getPassWord();
+                    if (account_input.equals(account)) {
+                        pwd = password;
+                        user = account;
                     }
 
                 }
+
+                if (accountEdt.getText().toString().equals(user) && passwordEdt.getText().toString().equals(pwd)) {
+                    Intent intent = new Intent(MainActivity.this, IndexActivity.class);
+                    editor = pref.edit();
+                    if (rememberPass.isChecked()) {// 复选框是否被选中
+                        editor.putBoolean("remember_password", true);
+                        editor.putString("account", account);
+                        editor.putString("password", password);
+                    } else {
+                        editor.clear();
+                    }
+                    editor.commit();
+                    startActivity(intent);
+                } else if (accountEdt.getText().toString().equals("") || passwordEdt.getText().toString().equals("")) {
+                    Toast.makeText(MainActivity.this, "用户名密码不能为空", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+        /**
+         * 记住密码
+         */
         rememberPass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -115,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        /**
+         * 自动登录
+         */
 
         autoLogin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -147,6 +159,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 accountEdt.setText("");
                 passwordEdt.setText("");
+                Intent intent = new Intent(MainActivity.this, CancelSplashScreen.class);
+                startActivity(intent);
+                finish();
+
             }
         });
     }
@@ -156,8 +172,8 @@ public class MainActivity extends AppCompatActivity {
         register = (TextView) findViewById(R.id.register);
         accountEdt = (EditText) findViewById(R.id.et_number);
         passwordEdt = (EditText) findViewById(R.id.et_password);
-        forgetPassword= (TextView) findViewById(R.id.forget_password);
-        cancel= (Button) findViewById(R.id.btn_cancel);
+        forgetPassword = (TextView) findViewById(R.id.forget_password);
+        cancel = (Button) findViewById(R.id.btn_cancel);
         rememberPass = (CheckBox) findViewById(R.id.remember_pass);
         autoLogin = (CheckBox) findViewById(R.id.auto_login);
     }
