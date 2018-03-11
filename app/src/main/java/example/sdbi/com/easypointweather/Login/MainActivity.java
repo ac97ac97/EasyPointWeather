@@ -105,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
                 } else if (accountEdt.getText().toString().equals("") || passwordEdt.getText().toString().equals("")) {
                     Toast.makeText(MainActivity.this, "用户名密码不能为空", Toast.LENGTH_SHORT).show();
                 } else {
+                    accountEdt.setText("");
+                    passwordEdt.setText("");
+                    rememberPass.setChecked(false);
+                    autoLogin.setChecked(false);
                     Toast.makeText(MainActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -24,6 +24,7 @@
     <!-- 3. 底部的四个选项菜单 -->
 
     <LinearLayout
+        android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#FFFFFF" >

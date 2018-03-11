@@ -10,9 +10,13 @@ import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import example.sdbi.com.easypointweather.Index.FoundFragment.FoundFragment;
+import example.sdbi.com.easypointweather.Index.HomeFragment.HomeFragment;
+import example.sdbi.com.easypointweather.Index.MyFragment.MyFragment;
 import example.sdbi.com.easypointweather.Login.MainActivity;
 import example.sdbi.com.easypointweather.R;
 
@@ -34,6 +38,7 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
     // 定义FragmentManager对象管理器
     private FragmentManager fragmentManager;
 //    private Toolbar toolbarHome;
+    private LinearLayout navigation;
 
 
     @Override
@@ -61,6 +66,7 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
         });
 
         // 初始化底部导航栏的控件
+        navigation= (LinearLayout) findViewById(R.id.navigation);
 //        titleHead= (RelativeLayout) findViewById(R.id.title_head);
 //        titleHeadHome= (FrameLayout) findViewById(R.id.title_home_layour);
         home_press= (RelativeLayout) findViewById(R.id.home_press);
@@ -150,6 +156,7 @@ public class IndexActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case 1:
+                navigation.setVisibility(View.GONE);
                 // secondImage.setImageResource(R.drawable.XXXX);
                 found_press_iv.setImageResource(R.drawable.found_press);
                 found_press_tv.setTextColor(Color.rgb(19, 181, 177));

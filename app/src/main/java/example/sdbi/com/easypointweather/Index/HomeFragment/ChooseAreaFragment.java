@@ -1,4 +1,4 @@
-package example.sdbi.com.easypointweather.Index;
+package example.sdbi.com.easypointweather.Index.HomeFragment;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import example.sdbi.com.easypointweather.Index.IndexActivity;
 import example.sdbi.com.easypointweather.R;
 import example.sdbi.com.easypointweather.db.City;
 import example.sdbi.com.easypointweather.db.County;

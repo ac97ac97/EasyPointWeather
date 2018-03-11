@@ -1,4 +1,4 @@
-package example.sdbi.com.easypointweather.Index;
+package example.sdbi.com.easypointweather.Index.HomeFragment;
 
 
 import android.content.Intent;
@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide;
 import java.io.IOException;
 
 import example.sdbi.com.easypointweather.R;
+
 import example.sdbi.com.easypointweather.gson.Forecast;
 import example.sdbi.com.easypointweather.gson.Weather;
 import example.sdbi.com.easypointweather.service.AutoUpdateService;

@@ -7,7 +7,7 @@
         android:id="@+id/choose_area_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="example.sdbi.com.easypointweather.Index.ChooseAreaFragment"/>
+        android:name="example.sdbi.com.easypointweather.Index.HomeFragment.ChooseAreaFragment"/>
 
 
 </FrameLayout>

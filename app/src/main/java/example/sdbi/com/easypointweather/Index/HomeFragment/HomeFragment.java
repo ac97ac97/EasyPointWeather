@@ -1,4 +1,4 @@
-package example.sdbi.com.easypointweather.Index;
+package example.sdbi.com.easypointweather.Index.HomeFragment;
 
 import example.sdbi.com.easypointweather.R;
 
