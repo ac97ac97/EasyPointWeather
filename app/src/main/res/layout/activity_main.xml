@@ -30,15 +30,16 @@
             android:text="账号:"
             android:textColor="#000"
             android:textSize="20sp" />
+
         <EditText
             android:id="@+id/et_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入您的手机号"
-            android:singleLine="true"
             android:layout_marginLeft="5dp"
             android:background="@null"
-            android:padding="10dp"/>
+            android:hint="请输入您的手机号"
+            android:padding="10dp"
+            android:singleLine="true" />
 
     </LinearLayout>
     <LinearLayout

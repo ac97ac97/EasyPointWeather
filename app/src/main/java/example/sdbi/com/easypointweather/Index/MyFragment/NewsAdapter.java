@@ -33,8 +33,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             newsContent=itemView.findViewById(R.id.newsContent);
             newsFromAdress=itemView.findViewById(R.id.newsFromAdress);
             newsDate=itemView.findViewById(R.id.newsDate);
-
-
         }
     }
     public NewsAdapter(List<News> mLis) {
@@ -56,7 +54,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.newsContent.setText(news.getNewsContent());
         holder.newsFromAdress.setText(news.getFromAdress());
         holder.newsDate.setText(news.getDate());
-
     }
 
     @Override

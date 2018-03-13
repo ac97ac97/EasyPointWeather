@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import org.litepal.crud.DataSupport;
 
@@ -28,6 +30,7 @@ import java.util.List;
 import java.util.Set;
 
 public class MyFragment extends Fragment implements ImageBarnnerFramLayout.FramLayoutLisenner {
+    private SwipeRefreshLayout swipeRefreshLayout;
     private ImageBarnnerFramLayout mGroup;
     private List<News> newsList = new ArrayList<>();
     private int img;
@@ -44,6 +47,21 @@ public class MyFragment extends Fragment implements ImageBarnnerFramLayout.FramL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.my_fragment, container, false);
+        swipeRefreshLayout=view.findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                try {
+                    Thread.sleep(2000);
+                    Toast.makeText(getActivity(),"刷新成功",Toast.LENGTH_SHORT).show();
+                    swipeRefreshLayout.setRefreshing(false);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
         InsertData.insertData();
         /**
          * 查询数据库里的新闻信息
@@ -69,7 +87,6 @@ public class MyFragment extends Fragment implements ImageBarnnerFramLayout.FramL
         recyclerView.setLayoutManager(manager);
         adapter = new NewsAdapter(newsList);
         recyclerView.setAdapter(adapter);
-
         //我们需要计算出我们当前手机的宽度
         DisplayMetrics dm = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -117,9 +134,6 @@ public class MyFragment extends Fragment implements ImageBarnnerFramLayout.FramL
                 date = newsDateData;
                 removeDuplicate(newsList);
                 newsList.add(new News(img, content, fromAdress, date));
-
-
-
         }
 
     }
