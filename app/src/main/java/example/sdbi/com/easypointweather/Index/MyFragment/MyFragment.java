@@ -3,7 +3,6 @@ package example.sdbi.com.easypointweather.Index.MyFragment;
 import example.sdbi.com.easypointweather.Index.view.ImageBarnnerFramLayout;
 import example.sdbi.com.easypointweather.R;
 import example.sdbi.com.easypointweather.db.News;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
